@@ -1,10 +1,11 @@
 -- levels for emp read label
 BEGIN
- SA_COMPONENTS.CREATE_LEVEL (
-   policy_name   => 'emp_r_label',
-   level_num     => 30,
-   short_name    => 'S',
-   long_name     => 'SECRET');
+SA_COMPONENTS.CREATE_LEVEL (
+policy_name   => 'emp_r_label',
+level_num     => 30,
+short_name    => 'S',
+long_name     => 'SECRET'
+);
 END;
 /
 

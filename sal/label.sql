@@ -1,3 +1,4 @@
+-- sal read label
 BEGIN
  SA_SYSDBA.CREATE_POLICY (
   policy_name      => 'sal_r_label',
@@ -6,6 +7,7 @@ BEGIN
 END;
 /
 
+-- sal write label
 BEGIN
  SA_SYSDBA.CREATE_POLICY (
   policy_name      => 'sal_w_label',

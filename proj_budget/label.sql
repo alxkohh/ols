@@ -1,3 +1,4 @@
+-- budget read label
 BEGIN
  SA_SYSDBA.CREATE_POLICY (
   policy_name      => 'budget_r_label',
@@ -6,6 +7,7 @@ BEGIN
 END;
 /
 
+-- budget write label
 BEGIN
  SA_SYSDBA.CREATE_POLICY (
   policy_name      => 'budget_w_label',

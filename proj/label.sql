@@ -1,3 +1,4 @@
+-- proj read label
 BEGIN
  SA_SYSDBA.CREATE_POLICY (
   policy_name      => 'proj_r_label',
@@ -6,6 +7,7 @@ BEGIN
 END;
 /
 
+-- proj write label
 BEGIN
  SA_SYSDBA.CREATE_POLICY (
   policy_name      => 'proj_w_label',
