@@ -13,7 +13,7 @@ BEGIN
         long_name   => 'MANAGER',
         parent_name => 'DIR'
     );
-    SA_COMPONENTS.CREATE_GROUP(
+    SA_COMPONENTS.CREATE_GROUP (
         policy_name => 'emp_r_label',
         group_num   => 10,
         short_name  => 'EMP',
@@ -33,7 +33,7 @@ BEGIN
         long_name   => 'MANAGER',
         parent_name => 'DIR'
     );
-    SA_COMPONENTS.CREATE_GROUP(
+    SA_COMPONENTS.CREATE_GROUP (
         policy_name => 'emp_w_label',
         group_num   => 10,
         short_name  => 'EMP',
