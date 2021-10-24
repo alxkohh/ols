@@ -1,4 +1,4 @@
-CREATE TABLE employee(
+CREATE TABLE employee (
     emp_name VARCHAR(30) PRIMARY KEY,
     phone VARCHAR(30),
     position VARCHAR(30),
@@ -22,7 +22,7 @@ CREATE TABLE project (
 );
 
 CREATE TABLE project_budget (
-  proj_name VARCHAR(30) PRIMARY KEY,
-  budget INT,
-  CONSTRAINT fk_proj_name FOREIGN KEY (proj_name) REFERENCES project(proj_name)
+    proj_name VARCHAR(30) PRIMARY KEY,
+    budget INT,
+    CONSTRAINT fk_proj_name FOREIGN KEY (proj_name) REFERENCES project(proj_name)
 );
