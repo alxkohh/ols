@@ -26,4 +26,3 @@ CREATE TABLE project_budget (
   budget INT,
   CONSTRAINT fk_proj_name FOREIGN KEY (proj_name) REFERENCES project(proj_name)
 );
-
