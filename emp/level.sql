@@ -18,7 +18,6 @@ BEGIN
         short_name  => 'U',
         long_name   => 'UNCLASSIFIED'
     );
-
     SA_COMPONENTS.CREATE_LEVEL (
         policy_name => 'emp_w_label',
         level_num   => 30,
