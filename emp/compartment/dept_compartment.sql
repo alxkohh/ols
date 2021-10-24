@@ -48,7 +48,7 @@ BEGIN
         long_name       => 'FINANCE'
     );
 END;
-/r
+/
 
 BEGIN
     SA_COMPONENTS.CREATE_COMPARTMENT(
