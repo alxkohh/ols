@@ -1,4 +1,4 @@
-CREATE FUNCTION gen_emp_r_label()
+CREATE OR REPLACE FUNCTION gen_emp_r_label
 RETURN VARCHAR
 IS
 label VARCHAR
@@ -8,7 +8,7 @@ RETURN label
 END;
 /
 
-CREATE FUNCTION gen_emp_w_label()
+CREATE OR REPLACE gen_emp_w_label
 RETURN VARCHAR
 IS
 label VARCHAR
