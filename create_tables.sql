@@ -5,7 +5,7 @@ DROP TABLE employees;
 
 CREATE TABLE employees (
     emp_name VARCHAR(30) PRIMARY KEY,
-    phone VARCHAR(30),
+    phone VARCHAR(8),
     position VARCHAR(30),
     dept VARCHAR(30),
     region VARCHAR(30)
@@ -22,7 +22,6 @@ CREATE TABLE projects (
     description VARCHAR(256),
     eng_type VARCHAR(30),
     region VARCHAR(30),
-    deadline DATE
 );
 
 CREATE TABLE project_budgets (
