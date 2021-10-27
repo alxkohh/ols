@@ -1,3 +1,4 @@
+-- run as company
 DROP TABLE project_budgets;
 DROP TABLE projects;
 DROP TABLE salary;
@@ -21,7 +22,7 @@ CREATE TABLE projects (
     proj_name VARCHAR(30) PRIMARY KEY,
     description VARCHAR(256),
     eng_type VARCHAR(30),
-    region VARCHAR(30),
+    region VARCHAR(30)
 );
 
 CREATE TABLE project_budgets (
