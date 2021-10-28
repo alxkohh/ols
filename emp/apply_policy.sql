@@ -36,7 +36,7 @@ BEGIN
     schema_name    => 'company', 
     table_name     => 'employees',
     table_options  => 'WRITE_CONTROL',
-    label_function => 'company.emp_update_label(:new.emp_name,:new.position,:new.dept,:new.region)'
+    label_function => 'company.emp_update_label(:new.emp_name,:new.position,:new.dept,:new.region)'  
   );
 END;
 /
