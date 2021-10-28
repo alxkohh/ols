@@ -1,7 +1,7 @@
 import employees
 import projects
 
-output_file = 'insert_tables.sql'
+output_file = '../c insert_tables.sql'
 to_gen = [employees, projects]
 
 with open(output_file, 'w+') as f:
