@@ -11,6 +11,8 @@ BEGIN
 END;
 /
 
+GRANT EXECUTE ON gen_salary_label TO PUBLIC;
+
 -- run as sys
 BEGIN
   SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('sal_rw_label_policy', 'company', 'salary');

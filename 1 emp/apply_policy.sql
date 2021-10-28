@@ -17,6 +17,8 @@ BEGIN
 END;
 /
 
+GRANT EXECUTE ON emp_update_label TO PUBLIC;
+
 -- run as sys
 BEGIN
   SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('emp_r_label_policy', 'company', 'employees');
