@@ -4,13 +4,15 @@ RETURN lbacsys.lbac_label AS
 emp_r_label VARCHAR(20);
 emp_w_label VARCHAR(20);
 sal_all_label VARCHAR(20);
+PRAGMA AUTONOMOUS_TRANSACTION;
 BEGIN
   emp_r_label := 'U:' || dept || ':' || position || ',' || region;
   emp_w_label := 'U:HR:' || position || ',' || region;
-  sal_all_label := 'C:HR' || position || ',' || region;
+  sal_all_label := 'C:HR:' || position || ',' || region;
 
   UPDATE company.employees SET emp_r_label = CHAR_TO_LABEL('emp_r_label_policy', emp_r_label) WHERE emp_name = new_emp_name;
   UPDATE company.salary SET sal_all_label = CHAR_TO_LABEL('sal_all_label_policy', sal_all_label) WHERE emp_name = new_emp_name;
+  COMMIT;
   RETURN to_lbac_data_label('emp_w_label_policy', emp_w_label);
 END;
 /
@@ -27,14 +29,14 @@ BEGIN
     policy_name    => 'emp_r_label_policy',
     schema_name    => 'company', 
     table_name     => 'employees',
-    table_options  => 'READ_CONTROL'
+    table_options  => 'READ_CONTROL, LABEL_DEFAULT'
   );
   SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
     policy_name    => 'emp_w_label_policy',
     schema_name    => 'company', 
     table_name     => 'employees',
     table_options  => 'WRITE_CONTROL',
-    label_function => company.emp_update_label(:new.emp_name, :new.position, :new.department, :new.region)
+    label_function => 'company.emp_update_label(:new.emp_name,:new.position,:new.dept,:new.region)'
   );
 END;
 /
