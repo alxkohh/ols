@@ -33,26 +33,26 @@ BEGIN
     SA_USER_ADMIN.SET_COMPARTMENTS (
         policy_name   => 'emp_r_label_policy',
         user_name     => 'dongy', 
-        read_comps    => 'HR',
-        write_comps   => 'HR',
-        def_comps     => 'HR',
-        row_comps     => 'HR'
+        read_comps    => 'HR,FIN,ENG',
+        write_comps   => 'HR,FIN,ENG',
+        def_comps     => 'HR,FIN,ENG',
+        row_comps     => ''
     );
     SA_USER_ADMIN.SET_COMPARTMENTS (
         policy_name   => 'emp_w_label_policy',
         user_name     => 'dongy', 
-        read_comps    => 'HR',
-        write_comps   => 'HR',
-        def_comps     => 'HR',
-        row_comps     => 'HR'
+        read_comps    => 'HR,FIN,ENG',
+        write_comps   => 'HR,FIN,ENG',
+        def_comps     => 'HR,FIN,ENG',
+        row_comps     => ''
     );
     SA_USER_ADMIN.SET_COMPARTMENTS (
         policy_name   => 'sal_rw_label_policy',
         user_name     => 'dongy', 
-        read_comps    => 'HR',
-        write_comps   => 'HR',
-        def_comps     => 'HR',
-        row_comps     => 'HR'
+        read_comps    => 'HR,FIN,ENG',
+        write_comps   => 'HR,FIN,ENG',
+        def_comps     => 'HR,FIN,ENG',
+        row_comps     => ''
     );
 
     SA_USER_ADMIN.SET_GROUPS (
