@@ -1,3 +1,6 @@
+DROP USER dongy;
+CREATE USER dongy IDENTIFIED BY dongy0;
+
 -- maximum permissions
 
 BEGIN
@@ -54,7 +57,7 @@ BEGIN
     SA_USER_ADMIN.SET_GROUPS (
         policy_name   => 'emp_r_label_policy',
         user_name     => 'dongy', 
-        read_groups   => 'GLOBAL',
+        read_groups   => 'GLOBAL,DIR',
         write_groups  => 'GLOBAL,DIR',
         def_groups    => 'GLOBAL,DIR',
         row_groups    => ''
@@ -74,22 +77,6 @@ BEGIN
         write_groups  => 'GLOBAL,DIR',
         def_groups    => 'GLOBAL,DIR',
         row_groups    => ''
-    );
-
-    SA_USER_ADMIN.SET_USER_PRIVS(
-        policy_name   => 'emp_r_label_policy',
-        user_name     => 'dongy', 
-        privileges    => 'FULL'
-    );
-    SA_USER_ADMIN.SET_USER_PRIVS(
-        policy_name   => 'emp_w_label_policy',
-        user_name     => 'dongy', 
-        privileges    => 'FULL'
-    );
-    SA_USER_ADMIN.SET_USER_PRIVS(
-        policy_name   => 'sal_rw_label_policy',
-        user_name     => 'dongy', 
-        privileges    => 'FULL'
     );
 END;
 /
