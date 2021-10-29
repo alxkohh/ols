@@ -17,7 +17,7 @@ BEGIN
     SA_SYSDBA.CREATE_POLICY(
         policy_name     => 'emp_r_label_policy',
         column_name     => 'emp_r_label',
-        default_options => 'READ_CONTROL, LABEL_DEFAULT'
+        default_options => 'READ_CONTROL'
     );
     SA_SYSDBA.CREATE_POLICY(
         policy_name     => 'emp_w_label_policy',
