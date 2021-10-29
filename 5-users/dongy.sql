@@ -1,7 +1,7 @@
 DROP USER dongy;
 CREATE USER dongy IDENTIFIED BY dongy0;
 
--- maximum permissions
+-- S, HR, Director, Global
 
 BEGIN
     SA_USER_ADMIN.SET_LEVELS (

@@ -7,7 +7,7 @@ dummy_label NUMBER(10);
 BEGIN
     SELECT * INTO employee FROM employees WHERE emp_name = new_emp_name;
     sal_rw_label := 'C:HR:' || employee.position || ',' || employee.region;
-    SELECT CHAR_TO_LABEL('sal_rw_label_policy', sal_rw_label) FROM dual;
+    SELECT CHAR_TO_LABEL('sal_rw_label_policy', sal_rw_label) INTO dummy_label FROM dual;
     RETURN to_lbac_data_label('sal_rw_label_policy', sal_rw_label);
 END;
 /
