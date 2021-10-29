@@ -1,5 +1,5 @@
 -- run as company
-CREATE OR REPLACE FUNCTION gen_salary_label(new_emp_name VARCHAR2)
+CREATE OR REPLACE FUNCTION gen_sal_rw_label(new_emp_name VARCHAR2)
 RETURN lbacsys.lbac_label AS
 employee employees%ROWTYPE;
 sal_rw_label VARCHAR(20);
@@ -12,7 +12,7 @@ BEGIN
 END;
 /
 
-GRANT EXECUTE ON gen_salary_label TO PUBLIC;
+GRANT EXECUTE ON gen_sal_rw_label TO PUBLIC;
 
 -- run as sys
 BEGIN
@@ -26,7 +26,7 @@ BEGIN
         schema_name    => 'company',
         table_name     => 'salary',
         table_options  => 'READ_CONTROL, WRITE_CONTROL',
-        label_function => 'company.gen_salary_label(:new.emp_name)'
+        label_function => 'company.gen_sal_rw_label(:new.emp_name)'
     );
 END;
 /

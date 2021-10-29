@@ -29,5 +29,6 @@ def gen_statements():
         results.append(helper.insert_vals(emp_stmt, emp_table_vals_f))
         results.append(helper.insert_vals(sal_stmt, sal_table_vals_f))
 
+    results.append('UPDATE employees SET employees.emp_r_label = gen_emp_r_label(employees.emp_name, employees.position, employees.dept, employees.region);\n')
     return results
 
