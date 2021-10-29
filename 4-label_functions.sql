@@ -1,4 +1,7 @@
 -- run as company
+
+-- EMPLOYEES
+
 CREATE OR REPLACE FUNCTION gen_emp_w_label(new_emp_name VARCHAR2, position VARCHAR2, dept VARCHAR2, region VARCHAR2)
 RETURN lbacsys.lbac_label AS
 emp_r_label VARCHAR(20);
@@ -37,26 +40,19 @@ END;
 
 GRANT EXECUTE ON gen_emp_r_label TO PUBLIC;
 
--- run as sys
+-- SALARY
+
+CREATE OR REPLACE FUNCTION gen_sal_rw_label(new_emp_name VARCHAR2)
+RETURN lbacsys.lbac_label AS
+employee employees%ROWTYPE;
+sal_rw_label VARCHAR(20);
+dummy_label NUMBER(10);
 BEGIN
-    SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('emp_r_label_policy', 'company', 'employees');
-    SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('emp_w_label_policy', 'company', 'employees');
+    SELECT * INTO employee FROM employees WHERE emp_name = new_emp_name;
+    sal_rw_label := 'C:HR:' || employee.position || ',' || employee.region;
+    SELECT CHAR_TO_LABEL('sal_rw_label_policy', sal_rw_label) INTO dummy_label FROM dual;
+    RETURN to_lbac_data_label('sal_rw_label_policy', sal_rw_label);
 END;
 /
 
-BEGIN
-    SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
-        policy_name    => 'emp_r_label_policy',
-        schema_name    => 'company', 
-        table_name     => 'employees',
-        table_options  => 'READ_CONTROL'
-    );
-    SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
-        policy_name    => 'emp_w_label_policy',
-        schema_name    => 'company', 
-        table_name     => 'employees',
-        table_options  => 'WRITE_CONTROL',
-        label_function => 'company.gen_emp_w_label(:new.emp_name,:new.position,:new.dept,:new.region)'  
-    );
-END;
-/
+GRANT EXECUTE ON gen_sal_rw_label TO PUBLIC;
