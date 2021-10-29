@@ -1,5 +1,6 @@
 DROP USER dongy;
 CREATE USER dongy IDENTIFIED BY dongy0;
+GRANT CREATE SESSION TO dongy;
 
 -- S, HR, Director, Global
 

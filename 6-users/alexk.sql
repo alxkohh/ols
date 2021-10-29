@@ -1,5 +1,6 @@
 DROP USER alexk;
 CREATE USER alexk IDENTIFIED BY alexk0;
+GRANT CREATE SESSION TO alexk;
 
 -- C, Finance, Mgr, EMEA
 
