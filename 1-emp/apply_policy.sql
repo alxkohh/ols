@@ -7,7 +7,7 @@ sal_rw_label VARCHAR(20);
 dummy_label NUMBER(10);
 PRAGMA AUTONOMOUS_TRANSACTION;
 BEGIN
-    emp_r_label := 'U:' || dept || ':' || position || ',' || region;
+    emp_r_label := 'U::' || position || ',' || region;
     emp_w_label := 'U:HR:' || position || ',' || region;
     sal_rw_label := 'C:HR:' || position || ',' || region;
 
@@ -24,12 +24,12 @@ END;
 
 GRANT EXECUTE ON gen_emp_w_label TO PUBLIC;
 
-CREATE OR REPLACE FUNCTION gen_emp_r_label(emp_name VARCHAR2, position VARCHAR2, dept VARCHAR2, region VARCHAR2)
+CREATE OR REPLACE FUNCTION gen_emp_r_label(position VARCHAR2, region VARCHAR2)
 RETURN NUMBER AS
 emp_r_label VARCHAR(20);
 label NUMBER(10);
 BEGIN
-    emp_r_label := 'U:' || dept || ':' || position || ',' || region;
+    emp_r_label := 'U::' || position || ',' || region;
     SELECT CHAR_TO_LABEL('emp_r_label_policy', emp_r_label) INTO label FROM dual;
     RETURN label;
 END;
