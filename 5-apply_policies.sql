@@ -13,7 +13,8 @@ BEGIN
         policy_name    => 'emp_r_label_policy',
         schema_name    => 'company', 
         table_name     => 'employees',
-        table_options  => 'READ_CONTROL'
+        table_options  => 'READ_CONTROL',
+        label_function => 'company.gen_emp_r_label(:new.position,:new.region)'
     );
     SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
         policy_name    => 'emp_w_label_policy',

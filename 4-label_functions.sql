@@ -28,13 +28,13 @@ END;
 GRANT EXECUTE ON gen_emp_w_label TO PUBLIC;
 
 CREATE OR REPLACE FUNCTION gen_emp_r_label(position VARCHAR2, region VARCHAR2)
-RETURN NUMBER AS
+RETURN lbacsys.lbac_label AS
 emp_r_label VARCHAR(20);
-label NUMBER(10);
+dummy_label NUMBER(10);
 BEGIN
     emp_r_label := 'U::' || position || ',' || region;
-    SELECT CHAR_TO_LABEL('emp_r_label_policy', emp_r_label) INTO label FROM dual;
-    RETURN label;
+    SELECT CHAR_TO_LABEL('emp_r_label_policy', emp_r_label) INTO dummy_label FROM dual;
+    RETURN to_lbac_data_label('emp_r_label_policy', emp_r_label);
 END;
 /
 
