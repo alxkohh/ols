@@ -1,25 +1,25 @@
 BEGIN
-    SA_USER_ADMIN.SET_LEVELS (
-        policy_name   => 'test_policy',
-        user_name     => 'company', 
-        max_level     => 'S',
-        min_level     => 'U',
-        def_level     => 'S'
+    SA_USER_ADMIN.SET_USER_LABELS (
+        policy_name       => 'test_policy',
+        user_name         => 'company',
+        max_read_label    => 'S::MGR',
+        max_write_label   => 'S::MGR',
+        min_write_label   => '',
+        def_label         => 'S::MGR',
+        row_label         => 'S::'
     );
 END;
 /
 
-DROP USER joycey;
-CREATE USER joycey IDENTIFIED BY joycey0;
-GRANT CREATE SESSION TO joycey;
-
 BEGIN
-    SA_USER_ADMIN.SET_LEVELS (
-        policy_name   => 'test_policy',
-        user_name     => 'joycey', 
-        max_level     => 'U',
-        min_level     => 'U',
-        def_level     => 'U'
+    SA_USER_ADMIN.SET_USER_LABELS (
+        policy_name       => 'test_policy',
+        user_name         => 'joycey',
+        max_read_label    => 'U::DIR',
+        max_write_label   => 'U::DIR',
+        min_write_label   => '',
+        def_label         => 'U::DIR',
+        row_label         => 'U::'
     );
 END;
 /
