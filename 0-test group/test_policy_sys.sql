@@ -54,3 +54,22 @@ BEGIN
     );
 END;
 /
+
+BEGIN
+    SA_USER_ADMIN.SET_USER_LABELS (
+        policy_name       => 'test_policy',
+        user_name         => 'joycey',
+        max_read_label    => 'S::MGR',
+        max_write_label   => 'S::MGR',
+        min_write_label   => 'S::MGR',
+        def_label         => 'S::MGR',
+        row_label         => 'S::'
+    );
+
+    SA_USER_ADMIN.SET_USER_PRIVS(
+        policy_name   => 'test_policy',
+        user_name     => 'company', 
+        privileges    => 'READ'
+    );
+END;
+/
