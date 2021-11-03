@@ -18,8 +18,8 @@ BEGIN
     SELECT CHAR_TO_LABEL('emp_r_label_policy', emp_r_label) INTO dummy_label FROM dual;
     SELECT CHAR_TO_LABEL('sal_rw_label_policy', sal_rw_label) INTO dummy_label FROM dual;
 
-    UPDATE company.employees SET emp_r_label = CHAR_TO_LABEL('emp_r_label_policy', emp_r_label) WHERE emp_name = new_emp_name;
-    UPDATE company.salary SET sal_rw_label = CHAR_TO_LABEL('sal_rw_label_policy', sal_rw_label) WHERE emp_name = new_emp_name;
+    UPDATE employees SET emp_r_label = CHAR_TO_LABEL('emp_r_label_policy', emp_r_label) WHERE emp_name = new_emp_name;
+    UPDATE salary SET sal_rw_label = CHAR_TO_LABEL('sal_rw_label_policy', sal_rw_label) WHERE emp_name = new_emp_name;
     COMMIT;
     RETURN to_lbac_data_label('emp_w_label_policy', emp_w_label);
 END;
@@ -67,16 +67,16 @@ budget_rw_label VARCHAR(20);
 dummy_label NUMBER(10);
 PRAGMA AUTONOMOUS_TRANSACTION;
 BEGIN
-    proj_r_label := classification || ':' || eng_type || ':' || region;
-    proj_w_label := classification || ':' || eng_type || ':MGR,' || region;
-    budget_rw_label := classification || ':' || eng_type || ':MGR,' || region;
+    proj_r_label := classification || ':ENG,' || eng_type || ':' || region;
+    proj_w_label := classification || ':ENG,' || eng_type || ':MGR,' || region;
+    budget_rw_label := classification || ':ENG,' || eng_type || ':MGR,' || region;
 
     SELECT CHAR_TO_LABEL('proj_r_label_policy', proj_r_label) INTO dummy_label FROM dual;
     SELECT CHAR_TO_LABEL('proj_w_label_policy', proj_w_label) INTO dummy_label FROM dual;
     SELECT CHAR_TO_LABEL('budget_rw_label_policy', budget_rw_label) INTO dummy_label FROM dual;
 
-    UPDATE company.projects SET proj_r_label = CHAR_TO_LABEL('proj_r_label_policy', proj_r_label) WHERE proj_name = new_proj_name;
-    UPDATE company.project_budgets SET budget_rw_label = CHAR_TO_LABEL('budget_rw_label_policy', budget_rw_label) WHERE proj_name = new_proj_name;
+    UPDATE projects SET proj_r_label = CHAR_TO_LABEL('proj_r_label_policy', proj_r_label) WHERE proj_name = new_proj_name;
+    UPDATE project_budgets SET budget_rw_label = CHAR_TO_LABEL('budget_rw_label_policy', budget_rw_label) WHERE proj_name = new_proj_name;
     COMMIT;
     RETURN to_lbac_data_label('proj_w_label_policy', proj_w_label);
 END;
@@ -89,7 +89,7 @@ RETURN lbacsys.lbac_label AS
 proj_r_label VARCHAR(20);
 dummy_label NUMBER(10);
 BEGIN
-    proj_r_label := classification || ':' || eng_type || ':' || region;
+    proj_r_label := classification || ':ENG,' || eng_type || ':' || region;
     SELECT CHAR_TO_LABEL('proj_r_label_policy', proj_r_label) INTO dummy_label FROM dual;
     RETURN to_lbac_data_label('proj_r_label_policy', proj_r_label);
 END;
@@ -106,7 +106,7 @@ budget_rw_label VARCHAR(20);
 dummy_label NUMBER(10);
 BEGIN
     SELECT * INTO project FROM projects WHERE proj_name = new_proj_name;
-    budget_rw_label := project.classification || ':' || project.eng_type || ':MGR,' || project.region;
+    budget_rw_label := project.classification || ':ENG,' || project.eng_type || ':MGR,' || project.region;
     SELECT CHAR_TO_LABEL('budget_rw_label_policy', budget_rw_label) INTO dummy_label FROM dual;
     RETURN to_lbac_data_label('budget_rw_label_policy', budget_rw_label);
 END;
