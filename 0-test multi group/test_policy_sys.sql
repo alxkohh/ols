@@ -89,10 +89,10 @@ BEGIN
         policy_name       => 'test3_policy',
         user_name         => 'joycey',
         max_read_label    => 'S::MGR,GLOBAL',
-        max_write_label   => 'S::MGR',
-        min_write_label   => 'S::MGR',
-        def_label         => 'S::MGR',
-        row_label         => 'S::'
+        max_write_label   => 'S::MGR,GLOBAL',
+        min_write_label   => 'S',
+        def_label         => 'S::MGR,GLOBAL',
+        row_label         => 'S::MGR,GLOBAL'
     );
 
     SA_USER_ADMIN.SET_USER_PRIVS(
