@@ -18,7 +18,7 @@ eng_types = {
     'FE': 'FRONTEND',
     'BE': 'BACKEND',
     'SEC': 'SECURITY',
-    'DOPS': 'DEVOPS'
+    'DEV': 'DEVOPS'
 }
 
 # groups
