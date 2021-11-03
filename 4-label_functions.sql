@@ -11,16 +11,19 @@ dummy_label NUMBER(10);
 PRAGMA AUTONOMOUS_TRANSACTION;
 BEGIN
     emp_r_label := 'U::' || position || ',' || region;
+    DBMS_OUTPUT.PUT_LINE(emp_r_label);
     emp_w_label := 'U:HR:' || position || ',' || region;
+    DBMS_OUTPUT.PUT_LINE(emp_w_label);
     sal_rw_label := 'C:HR:' || position || ',' || region;
+    DBMS_OUTPUT.PUT_LINE(sal_rw_label);
 
     SELECT CHAR_TO_LABEL('emp_w_label_policy', emp_w_label) INTO dummy_label FROM dual;
     SELECT CHAR_TO_LABEL('emp_r_label_policy', emp_r_label) INTO dummy_label FROM dual;
     SELECT CHAR_TO_LABEL('sal_rw_label_policy', sal_rw_label) INTO dummy_label FROM dual;
 
-    UPDATE employees SET emp_r_label = CHAR_TO_LABEL('emp_r_label_policy', emp_r_label) WHERE emp_name = new_emp_name;
-    UPDATE salary SET sal_rw_label = CHAR_TO_LABEL('sal_rw_label_policy', sal_rw_label) WHERE emp_name = new_emp_name;
-    COMMIT;
+    --UPDATE employees SET emp_r_label = CHAR_TO_LABEL('emp_r_label_policy', emp_r_label) WHERE emp_name = new_emp_name;
+    --UPDATE salary SET sal_rw_label = CHAR_TO_LABEL('sal_rw_label_policy', sal_rw_label) WHERE emp_name = new_emp_name;
+    --COMMIT;
     RETURN to_lbac_data_label('emp_w_label_policy', emp_w_label);
 END;
 /

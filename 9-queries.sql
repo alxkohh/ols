@@ -5,7 +5,6 @@ select emp_name, label_to_char(sal_rw_label) from company.salary;
 select proj_name, label_to_char(proj_r_label), label_to_char(proj_w_label) from company.projects;
 select proj_name, label_to_char(budget_rw_label) from company.project_budgets;
 
-
 -- employees
 
 -- query 1: dir, apac
@@ -19,7 +18,19 @@ select proj_name, label_to_char(budget_rw_label) from company.project_budgets;
 -- query 3: HR, dir, apac
 -- query 4: HR, emp, global
 
--- manually need to insert multi-compartment projects
+-- manually need to insert an employee
+
+select emp_name, label_to_char(emp_r_label), label_to_char(emp_w_label) from company.employees;
+
+INSERT INTO employees (emp_name, phone, position, dept, region) VALUES ('joycey', '91234567', 'EMP', 'ENG', 'SG');
+INSERT INTO salary (emp_name, salary) VALUES ('joycey', 50000);
+
+UPDATE salary SET salary = 55000 WHERE emp_name  = 'joycey';
+SELECT emp_name, label_to_char(sal_rw_label) FROM company.salary WHERE emp_name = 'joycey';
+
+UPDATE employees SET region = 'HK' WHERE emp_name = 'joycey';
+SELECT emp_name, label_to_char(sal_rw_label) FROM company.salary WHERE emp_name = 'joycey';
+SELECT emp_name, label_to_char(sal_rw_label) FROM company.salary WHERE emp_name = 'joycey';
 
 -- query 5: update position of employee from DIR to EMP
 -- query 5a: emp table should have labels changed
@@ -28,5 +39,7 @@ select proj_name, label_to_char(budget_rw_label) from company.project_budgets;
 -- query 6: update region of employee from HK to GLOBAL
 -- query 6a: emp table should have labels changed
 -- query 6b: salaray table should have labels changed
+
+-- projects
 
 -- manually need to insert multi-compartment projects
