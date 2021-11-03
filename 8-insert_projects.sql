@@ -98,6 +98,7 @@ INSERT INTO projects (proj_name, description, classification, eng_type, region) 
 INSERT INTO project_budgets (proj_name, budget) VALUES ('xhxonbiiuf', 90000);
 INSERT INTO projects (proj_name, description, classification, eng_type, region) VALUES ('jjjpjwwivh', 'ccwtmhitemblaypeweutzifycgyepb', 'C', 'FE', 'SF');
 INSERT INTO project_budgets (proj_name, budget) VALUES ('jjjpjwwivh', 64000);
+COMMIT;
 INSERT INTO projects (proj_name, description, classification, eng_type, region) VALUES ('zrnctwoegw', 'fwiosouuducrwzuwqpjxsjgkwwjaay', 'C', 'BE', 'GLOBAL');
 INSERT INTO project_budgets (proj_name, budget) VALUES ('zrnctwoegw', 94000);
 INSERT INTO projects (proj_name, description, classification, eng_type, region) VALUES ('ugcqavneyl', 'iccqqdykjnoeofxsotrkcgubhfhsrr', 'C', 'BE', 'APAC');
@@ -198,6 +199,7 @@ INSERT INTO projects (proj_name, description, classification, eng_type, region) 
 INSERT INTO project_budgets (proj_name, budget) VALUES ('xgeqetvzlj', 54000);
 INSERT INTO projects (proj_name, description, classification, eng_type, region) VALUES ('ktuhpjlpuq', 'gxompzjzwpsfmrnactjskyevmgffuy', 'S', 'BE', 'SF');
 INSERT INTO project_budgets (proj_name, budget) VALUES ('ktuhpjlpuq', 30000);
+COMMIT;
 INSERT INTO projects (proj_name, description, classification, eng_type, region) VALUES ('pdbmsmjitt', 'iayhjxcgowgbvyotjcfqzlyfymxdga', 'S', 'SEC', 'GLOBAL');
 INSERT INTO project_budgets (proj_name, budget) VALUES ('pdbmsmjitt', 59000);
 INSERT INTO projects (proj_name, description, classification, eng_type, region) VALUES ('smsclbtvlh', 'szxcfhamppixxlnzyctnpitpvajlrv', 'S', 'SEC', 'APAC');

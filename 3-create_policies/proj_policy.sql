@@ -1,6 +1,17 @@
 -- CREATE PROJECT POLICY, RUN AS sys
 
--- proj r/w label
+BEGIN
+    SA_SYSDBA.DROP_POLICY(
+        policy_name     => 'proj_r_label_policy',
+        drop_column     => TRUE
+    );
+    SA_SYSDBA.DROP_POLICY(
+        policy_name     => 'proj_w_label_policy',
+        drop_column     => TRUE
+    );
+END;
+/
+
 BEGIN
     SA_SYSDBA.CREATE_POLICY(
         policy_name     => 'proj_r_label_policy',
@@ -108,6 +119,49 @@ BEGIN
         comp_num    => 40,
         short_name  => 'DEV',
         long_name   => 'DEV_OPS'
+    );
+END;
+/
+
+-- COMPARTMENT (DEPT)
+
+BEGIN
+
+    SA_COMPONENTS.CREATE_COMPARTMENT (
+        policy_name => 'proj_r_label_policy',
+        comp_num    => 30,
+        short_name  => 'HR',
+        long_name   => 'HUMAN_RESOURCE'
+    );
+    SA_COMPONENTS.CREATE_COMPARTMENT (
+        policy_name => 'proj_r_label_policy',
+        comp_num    => 20,
+        short_name  => 'FIN',
+        long_name   => 'FINANCE'
+    );
+    SA_COMPONENTS.CREATE_COMPARTMENT (
+        policy_name => 'proj_r_label_policy',
+        comp_num    => 10,
+        short_name  => 'ENG',
+        long_name   => 'ENGINEERING'
+    );
+    SA_COMPONENTS.CREATE_COMPARTMENT (
+        policy_name => 'proj_w_label_policy',
+        comp_num    => 30,
+        short_name  => 'HR',
+        long_name   => 'HUMAN_RESOURCE'
+    );
+    SA_COMPONENTS.CREATE_COMPARTMENT (
+        policy_name => 'proj_w_label_policy',
+        comp_num    => 20,
+        short_name  => 'FIN',
+        long_name   => 'FINANCE'
+    );
+    SA_COMPONENTS.CREATE_COMPARTMENT (
+        policy_name => 'proj_w_label_policy',
+        comp_num    => 10,
+        short_name  => 'ENG',
+        long_name   => 'ENGINEERING'
     );
 END;
 /
