@@ -21,6 +21,7 @@ CREATE TABLE salary (
 CREATE TABLE projects (
     proj_name VARCHAR(30) PRIMARY KEY,
     description VARCHAR(256),
+    classification VARCHAR(30),
     eng_type VARCHAR(30),
     region VARCHAR(30)
 );

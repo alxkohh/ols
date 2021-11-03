@@ -43,8 +43,8 @@ regions = {
 
 required = {
     # what to iterate over
-    'employees' : [levels, departments, positions, regions],
-    'projects' : [levels, eng_types, positions, regions]
+    'employees' : [departments, positions, regions],
+    'projects' : [levels, eng_types, regions]
 }
 
 def get(t):

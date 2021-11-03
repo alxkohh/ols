@@ -18,10 +18,9 @@ def gen_statements():
     for elem in product(*labels.get('employees')):
         emp_name = helper.gen_random_alpha_str(10)
         phone = '9' + helper.gen_random_numeric_str(7)
-        level = elem[0]
-        dept = elem[1]
-        pos = elem[2]
-        region = elem[3]
+        dept = elem[0]
+        pos = elem[1]
+        region = elem[2]
         salary = helper.gen_random_numeric(30, 100) * 1000
 
         emp_table_vals_f = helper.sql_values_format([emp_name, phone, pos, dept, region])
