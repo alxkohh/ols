@@ -76,7 +76,7 @@ BEGIN
     SELECT CHAR_TO_LABEL('budget_rw_label_policy', budget_rw_label) INTO dummy_label FROM dual;
 
     UPDATE company.projects SET proj_r_label = CHAR_TO_LABEL('proj_r_label_policy', proj_r_label) WHERE proj_name = new_proj_name;
-    UPDATE company.budget SET budget_rw_label = CHAR_TO_LABEL('budget_rw_label_policy', budget_rw_label) WHERE proj_name = new_proj_name;
+    UPDATE company.project_budgets SET budget_rw_label = CHAR_TO_LABEL('budget_rw_label_policy', budget_rw_label) WHERE proj_name = new_proj_name;
     COMMIT;
     RETURN to_lbac_data_label('proj_w_label_policy', proj_w_label);
 END;
