@@ -61,9 +61,9 @@ BEGIN
         user_name         => 'joycey',
         max_read_label    => 'S::MGR',
         max_write_label   => 'S::MGR',
-        min_write_label   => 'S::MGR',
+        min_write_label   => 'S',
         def_label         => 'S::MGR',
-        row_label         => 'S::'
+        row_label         => 'S::MGR'
     );
 
     SA_USER_ADMIN.SET_USER_PRIVS(
