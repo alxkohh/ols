@@ -5,17 +5,17 @@
 CREATE OR REPLACE FUNCTION gen_emp_label(new_emp_name VARCHAR2, position VARCHAR2, dept VARCHAR2, region VARCHAR2)
 RETURN lbacsys.lbac_label AS
 emp_label VARCHAR(20);
-sal_label VARCHAR(20);
+new_sal_label VARCHAR(20);
 dummy_label NUMBER(10);
 PRAGMA AUTONOMOUS_TRANSACTION;
 BEGIN
     emp_label := 'U:' || dept || ':' || position || ',' || region;
-    sal_label := 'C:' || dept || ':' || position || ',' || region;
+    new_sal_label := 'C:' || dept || ':' || position || ',' || region;
 
     SELECT CHAR_TO_LABEL('emp_policy', emp_label) INTO dummy_label FROM dual;
-    SELECT CHAR_TO_LABEL('sal_policy', sal_label) INTO dummy_label FROM dual;
+    SELECT CHAR_TO_LABEL('sal_policy', new_sal_label) INTO dummy_label FROM dual;
 
-    UPDATE salary SET sal_label = sal_label WHERE emp_name = new_emp_name;
+    UPDATE salary SET sal_label = new_sal_label WHERE emp_name = new_emp_name;
     COMMIT;
     RETURN to_lbac_data_label('emp_policy', emp_label);
 END;
