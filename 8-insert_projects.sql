@@ -240,3 +240,5 @@ INSERT INTO projects (proj_name, description, classification, eng_type, region) 
 INSERT INTO project_budgets (proj_name, budget) VALUES ('ottzvlworj', 50000);
 INSERT INTO projects (proj_name, description, classification, eng_type, region) VALUES ('yocrnzpefj', 'vficvajblrtmblhpdrkpjlwpwarahi', 'S', 'DEV', 'SF');
 INSERT INTO project_budgets (proj_name, budget) VALUES ('yocrnzpefj', 83000);
+
+UPDATE project_budgets SET budget_label = company.gen_budget_label(proj_name);

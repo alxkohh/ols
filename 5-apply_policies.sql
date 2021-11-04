@@ -18,8 +18,7 @@ BEGIN
         policy_name    => 'sal_policy',
         schema_name    => 'company',
         table_name     => 'salary',
-        table_options  => 'READ_CONTROL, WRITE_CONTROL',
-        label_function => 'company.gen_sal_label(:new.emp_name)'
+        table_options  => 'READ_CONTROL, WRITE_CONTROL'
     );
 END;
 /
@@ -42,8 +41,7 @@ BEGIN
         policy_name    => 'budget_policy',
         schema_name    => 'company',
         table_name     => 'project_budgets',
-        table_options  => 'READ_CONTROL, WRITE_CONTROL',
-        label_function => 'company.gen_budget_label(:new.proj_name)'
+        table_options  => 'READ_CONTROL, WRITE_CONTROL'
     );
 END;
 /

@@ -178,3 +178,5 @@ INSERT INTO employees (emp_name, phone, position, dept, region) VALUES ('berfqsj
 INSERT INTO salary (emp_name, salary) VALUES ('berfqsjywk', 65000);
 INSERT INTO employees (emp_name, phone, position, dept, region) VALUES ('kntkzugeoo', '92024471', 'EMP', 'ENG', 'SF');
 INSERT INTO salary (emp_name, salary) VALUES ('kntkzugeoo', 43000);
+
+UPDATE salary SET sal_label = company.gen_sal_label(emp_name);
