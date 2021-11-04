@@ -15,6 +15,7 @@ BEGIN
     SELECT CHAR_TO_LABEL('emp_policy', emp_label) INTO dummy_label FROM dual;
     SELECT CHAR_TO_LABEL('sal_policy', new_sal_label) INTO dummy_label FROM dual;
 
+    DBMS_OUTPUT.PUT_LINE(new_sal_label);
     UPDATE company.salary SET sal_label = CHAR_TO_LABEL('sal_policy', new_sal_label) WHERE emp_name = new_emp_name;
     COMMIT;
     RETURN to_lbac_data_label('emp_policy', emp_label);
@@ -45,17 +46,18 @@ GRANT EXECUTE ON gen_sal_label TO PUBLIC;
 CREATE OR REPLACE FUNCTION gen_proj_label(new_proj_name VARCHAR2, classification VARCHAR2, eng_type VARCHAR2, region VARCHAR2)
 RETURN lbacsys.lbac_label AS
 proj_label VARCHAR(20);
-budget_label VARCHAR(20);
+new_budget_label VARCHAR(20);
 dummy_label NUMBER(10);
 PRAGMA AUTONOMOUS_TRANSACTION;
 BEGIN
     proj_label := classification || ':ENG,' || eng_type || ':' || region;
-    budget_label := classification || ':ENG,' || eng_type || ':' || region;
+    new_budget_label := classification || ':ENG,' || eng_type || ':' || region;
 
     SELECT CHAR_TO_LABEL('proj_policy', proj_label) INTO dummy_label FROM dual;
-    SELECT CHAR_TO_LABEL('budget_policy', budget_label) INTO dummy_label FROM dual;
+    SELECT CHAR_TO_LABEL('budget_policy', new_budget_label) INTO dummy_label FROM dual;
 
-    UPDATE project_budgets SET budget_label = budget_label WHERE proj_name = new_proj_name;
+    DBMS_OUTPUT.PUT_LINE(new_budget_label);
+    UPDATE project_budgets SET budget_label = new_budget_label WHERE proj_name = new_proj_name;
     COMMIT;
     RETURN to_lbac_data_label('proj_policy', proj_label);
 END;
