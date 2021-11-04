@@ -1,9 +1,9 @@
 -- select all
 
-select emp_name, label_to_char(emp_r_label), label_to_char(emp_w_label) from company.employees;
-select emp_name, label_to_char(sal_rw_label) from company.salary;
-select proj_name, label_to_char(proj_r_label), label_to_char(proj_w_label) from company.projects;
-select proj_name, label_to_char(budget_rw_label) from company.project_budgets;
+SELECT emp_name, label_to_char(emp_label) FROM company.employees;
+SELECT emp_name, label_to_char(sal_label) FROM company.salary;
+SELECT proj_name, label_to_char(proj_label) FROM company.projects;
+SELECT proj_name, label_to_char(budget_label) FROM company.project_budgets;
 
 -- employees
 
@@ -20,17 +20,21 @@ select proj_name, label_to_char(budget_rw_label) from company.project_budgets;
 
 -- manually need to insert an employee
 
-select emp_name, label_to_char(emp_r_label), label_to_char(emp_w_label) from company.employees;
-
 INSERT INTO employees (emp_name, phone, position, dept, region) VALUES ('joycey', '91234567', 'EMP', 'ENG', 'SG');
 INSERT INTO salary (emp_name, salary) VALUES ('joycey', 50000);
+SELECT emp_name, label_to_char(emp_label) FROM company.employees WHERE emp_name = 'joycey';
+SELECT emp_name, label_to_char(sal_label) FROM company.salary WHERE emp_name = 'joycey';
 
 UPDATE salary SET salary = 55000 WHERE emp_name  = 'joycey';
-SELECT emp_name, label_to_char(sal_rw_label) FROM company.salary WHERE emp_name = 'joycey';
+SELECT emp_name, label_to_char(sal_label) FROM company.salary WHERE emp_name = 'joycey';
+-- Updating salary does not change label
 
+SELECT emp_name, label_to_char(emp_label) FROM company.employees WHERE emp_name = 'joycey';
 UPDATE employees SET region = 'HK' WHERE emp_name = 'joycey';
-SELECT emp_name, label_to_char(sal_rw_label) FROM company.salary WHERE emp_name = 'joycey';
-SELECT emp_name, label_to_char(sal_rw_label) FROM company.salary WHERE emp_name = 'joycey';
+SELECT emp_name, label_to_char(emp_label) FROM company.employees WHERE emp_name = 'joycey';
+-- Emp label changed region
+SELECT emp_name, label_to_char(sal_label) FROM company.salary WHERE emp_name = 'joycey';
+-- Sal label changed region
 
 -- query 5: update position of employee from DIR to EMP
 -- query 5a: emp table should have labels changed
