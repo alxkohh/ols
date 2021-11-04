@@ -65,19 +65,3 @@ END;
 /
 
 GRANT EXECUTE ON gen_budget_label TO PUBLIC;
-
-CREATE OR REPLACE TRIGGER insert_sal_label
-BEFORE INSERT ON salary
-FOR EACH ROW
-DECLARE
-employee employees%ROWTYPE;
-sal_label VARCHAR(20);
-BEGIN
-    SELECT * INTO employee FROM employees WHERE emp_name = :new.emp_name;
-    sal_label := 'C:' || employee.dept || ':' || employee.position || ',' || employee.region;
-    DBMS_OUTPUT.PUT_LINE(sal_label);
-    UPDATE salary SET sal_label = CHAR_TO_LABEL('sal_policy', sal_label) WHERE emp_name = :new.emp_name;
-END;
-/
-
-GRANT EXECUTE ON insert_sal_label TO PUBLIC;
