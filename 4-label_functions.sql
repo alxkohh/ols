@@ -17,7 +17,7 @@ BEGIN
     SELECT CHAR_TO_LABEL('emp_policy', emp_label) INTO dummy_label FROM dual;
     SELECT CHAR_TO_LABEL('sal_policy', sal_label) INTO dummy_label FROM dual;
 
-    UPDATE salary SET sal_label = CHAR_TO_LABEL('sal_policy', sal_label) WHERE emp_name = new_emp_name;
+    UPDATE salary SET sal_label = sal_label WHERE emp_name = new_emp_name;
     COMMIT;
     RETURN to_lbac_data_label('emp_policy', emp_label);
 END;
@@ -57,7 +57,7 @@ BEGIN
     SELECT CHAR_TO_LABEL('proj_policy', proj_label) INTO dummy_label FROM dual;
     SELECT CHAR_TO_LABEL('budget_policy', budget_label) INTO dummy_label FROM dual;
 
-    UPDATE project_budgets SET budget_label = CHAR_TO_LABEL('budget_policy', budget_label) WHERE proj_name = new_proj_name;
+    UPDATE project_budgets SET budget_label = budget_label WHERE proj_name = new_proj_name;
     COMMIT;
     RETURN to_lbac_data_label('proj_policy', proj_label);
 END;

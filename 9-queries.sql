@@ -18,32 +18,34 @@ SELECT proj_name, label_to_char(budget_label) FROM company.project_budgets;
 -- query 3: HR, dir, apac
 -- query 4: HR, emp, global
 
--- manually need to insert an employee
+-- combined
 
+-- query 5: update employee region from SG to HK
+
+DELETE FROM salary WHERE emp_name = 'joycey';
+DELETE FROM employees WHERE emp_name = 'joycey';
 INSERT INTO employees (emp_name, phone, position, dept, region) VALUES ('joycey', '91234567', 'EMP', 'ENG', 'SG');
 INSERT INTO salary (emp_name, salary) VALUES ('joycey', 50000);
+
+-- show original labels
 SELECT emp_name, label_to_char(emp_label) FROM company.employees WHERE emp_name = 'joycey';
 SELECT emp_name, label_to_char(sal_label) FROM company.salary WHERE emp_name = 'joycey';
 
-UPDATE salary SET salary = 55000 WHERE emp_name  = 'joycey';
-SELECT emp_name, label_to_char(sal_label) FROM company.salary WHERE emp_name = 'joycey';
--- Updating salary does not change label
-
-SELECT emp_name, label_to_char(emp_label) FROM company.employees WHERE emp_name = 'joycey';
+-- update and show changed label region
 UPDATE employees SET region = 'HK' WHERE emp_name = 'joycey';
 SELECT emp_name, label_to_char(emp_label) FROM company.employees WHERE emp_name = 'joycey';
--- Emp label changed region
 SELECT emp_name, label_to_char(sal_label) FROM company.salary WHERE emp_name = 'joycey';
--- Sal label changed region
 
--- query 5: update position of employee from DIR to EMP
--- query 5a: emp table should have labels changed
--- query 5b: salaray table should have labels changed
-
--- query 6: update region of employee from HK to GLOBAL
--- query 6a: emp table should have labels changed
--- query 6b: salaray table should have labels changed
+-- query 6: update employee position from DIR to EMP
 
 -- projects
 
--- manually need to insert multi-compartment projects
+-- query 1: U:ENG,FE:EMP,APAC
+-- query 2: S:ENG,BE:DIR,APAC
+
+-- query 3: multi-compartment
+
+-- insert a multi-compartment project
+-- query 3a: user with only one compartment cannot see project
+-- query 3b: user with both compartments can see that project
+
