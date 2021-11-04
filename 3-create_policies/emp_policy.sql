@@ -1,6 +1,5 @@
 -- CREATE EMP POLICY, RUN AS sys
 
--- emp r/w label
 BEGIN
     SA_SYSDBA.DROP_POLICY(
         policy_name     => 'emp_policy',
@@ -20,32 +19,30 @@ END;
 
 -- LEVEL
 
--- levels for emp r/w label
 BEGIN
     SA_COMPONENTS.CREATE_LEVEL (
         policy_name => 'emp_policy',
         level_num   => 30,
-        short_name  => 'S',
-        long_name   => 'SECRET'
+        short_name  => 'DIR',
+        long_name   => 'DIRECTOR'
     );
     SA_COMPONENTS.CREATE_LEVEL (
         policy_name => 'emp_policy',
         level_num   => 20,
-        short_name  => 'C',
-        long_name   => 'CLASSIFIED'
+        short_name  => 'MGR',
+        long_name   => 'MANAGER'
     );
     SA_COMPONENTS.CREATE_LEVEL (
         policy_name => 'emp_policy',
         level_num   => 10,
-        short_name  => 'U',
-        long_name   => 'UNCLASSIFIED'
+        short_name  => 'EMP',
+        long_name   => 'EMPLOYEE'
     );
 END;
 /
 
 -- COMPARTMENT (DEPT)
 
--- dept compartments for emp r/w label
 BEGIN
     SA_COMPONENTS.CREATE_COMPARTMENT (
         policy_name => 'emp_policy',
@@ -68,36 +65,8 @@ BEGIN
 END;
 /
 
--- GROUP (POSITION)
-
--- position groups for emp r/w label
-BEGIN
-    SA_COMPONENTS.CREATE_GROUP (
-        policy_name => 'emp_policy',
-        group_num   => 1000,
-        short_name  => 'DIR',
-        long_name   => 'DIRECTOR'
-    );
-    SA_COMPONENTS.CREATE_GROUP (
-        policy_name => 'emp_policy',
-        group_num   => 1100,
-        short_name  => 'MGR',
-        long_name   => 'MANAGER',
-        parent_name => 'DIR'
-    );
-    SA_COMPONENTS.CREATE_GROUP (
-        policy_name => 'emp_policy',
-        group_num   => 1110,
-        short_name  => 'EMP',
-        long_name   => 'EMPLOYEE',
-        parent_name => 'MGR'
-    );
-END;
-/
-
 -- GROUP (REGION)
 
--- region groups for emp r/w label
 BEGIN
     SA_COMPONENTS.CREATE_GROUP (
         policy_name => 'emp_policy',

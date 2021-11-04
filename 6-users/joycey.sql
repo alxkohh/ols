@@ -2,37 +2,28 @@ DROP USER joycey;
 CREATE USER joycey IDENTIFIED BY joycey0;
 GRANT CREATE SESSION TO joycey;
 
--- S, Eng, FE, Employee, SG
+-- EMP, HR, GLOBAL
 
 BEGIN 
     SA_USER_ADMIN.SET_USER_LABELS (
-        policy_name       => 'emp_r_label_policy',
+        policy_name       => 'emp_policy',
         user_name         => 'joycey',
-        max_read_label    => 'S:ENG,HR,FIN:EMP,SG',
-        max_write_label   => 'S:ENG:EMP,SG',
-        min_write_label   => '',
-        def_label         => 'S:ENG:EMP,SG',
-        row_label         => 'U::'
+        max_read_label    => 'EMP:ENG,HR,FIN:GLOBAL',
+        max_write_label   => 'EMP:ENG,HR,FIN:GLOBAL',
+        min_write_label   => 'EMP',
+        def_label         => 'EMP:ENG,HR,FIN:GLOBAL'
     );
-
+    
     SA_USER_ADMIN.SET_USER_LABELS (
-        policy_name       => 'emp_w_label_policy',
+        policy_name       => 'sal_policy',
         user_name         => 'joycey',
-        max_read_label    => 'S:ENG,HR,FIN:EMP,SG',
-        max_write_label   => 'S:ENG:EMP,SG',
-        min_write_label   => '',
-        def_label         => 'S:ENG:EMP,SG',
-        row_label         => 'U::'
-    );
-
-    SA_USER_ADMIN.SET_USER_LABELS (
-        policy_name       => 'sal_rw_label_policy',
-        user_name         => 'joycey',
-        max_read_label    => 'S:ENG:EMP,SG',
-        max_write_label   => 'S:ENG:EMP,SG',
-        min_write_label   => '',
-        def_label         => 'S:ENG:EMP,SG',
-        row_label         => 'U::'
+        max_read_label    => 'EMP::',
+        max_write_label   => 'EMP::',
+        min_write_label   => 'EMP',
+        def_label         => 'EMP::'
     );
 END;
 /
+
+GRANT SELECT, UPDATE, INSERT, DELETE ON company.employees TO joycey;
+GRANT SELECT ON company.salary TO joycey;
