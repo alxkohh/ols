@@ -11,8 +11,6 @@ PRAGMA AUTONOMOUS_TRANSACTION;
 BEGIN
     emp_label := 'U:' || dept || ':' || position || ',' || region;
     sal_label := 'C:' || dept || ':' || position || ',' || region;
-    DBMS_OUTPUT.PUT_LINE(emp_label);
-    DBMS_OUTPUT.PUT_LINE(sal_label);
 
     SELECT CHAR_TO_LABEL('emp_policy', emp_label) INTO dummy_label FROM dual;
     SELECT CHAR_TO_LABEL('sal_policy', sal_label) INTO dummy_label FROM dual;
