@@ -13,6 +13,15 @@ BEGIN
         min_write_label   => 'C',
         def_label         => 'C:FE:APAC'
     );
+
+    SA_USER_ADMIN.SET_USER_LABELS (
+        policy_name       => 'budget_policy',
+        user_name         => 'bobn',
+        max_read_label    => 'C:FE:APAC',
+        max_write_label   => 'C:FE:APAC',
+        min_write_label   => 'U',
+        def_label         => 'C:FE:APAC'
+    );
 END;
 /
 
