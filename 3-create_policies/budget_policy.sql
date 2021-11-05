@@ -17,9 +17,8 @@ BEGIN
 END;
 /
 
--- BUDGET
+-- LEVEL (CLASSIFICATION)
 
--- levels for budget r/w labels
 BEGIN
     SA_COMPONENTS.CREATE_LEVEL (
         policy_name => 'budget_policy',

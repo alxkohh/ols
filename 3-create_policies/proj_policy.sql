@@ -17,9 +17,8 @@ BEGIN
 END;
 /
 
--- LEVEL 
+-- LEVEL (CLASSIFICATION)
 
--- levels for proj r/w labels
 BEGIN
     SA_COMPONENTS.CREATE_LEVEL (
         policy_name => 'proj_policy',
@@ -43,7 +42,7 @@ END;
 /
 
 -- COMPARTMENT (ENG TYPE)
--- eng type compartments for proj r/w label
+
 BEGIN
     SA_COMPONENTS.CREATE_COMPARTMENT (
         policy_name => 'proj_policy',
@@ -72,61 +71,8 @@ BEGIN
 END;
 /
 
--- COMPARTMENT (DEPT)
-
-BEGIN
-
-    SA_COMPONENTS.CREATE_COMPARTMENT (
-        policy_name => 'proj_policy',
-        comp_num    => 30,
-        short_name  => 'HR',
-        long_name   => 'HUMAN_RESOURCE'
-    );
-    SA_COMPONENTS.CREATE_COMPARTMENT (
-        policy_name => 'proj_policy',
-        comp_num    => 20,
-        short_name  => 'FIN',
-        long_name   => 'FINANCE'
-    );
-    SA_COMPONENTS.CREATE_COMPARTMENT (
-        policy_name => 'proj_policy',
-        comp_num    => 10,
-        short_name  => 'ENG',
-        long_name   => 'ENGINEERING'
-    );
-END;
-/
-
--- GROUP (POSITION)
-
--- position groups for proj r/w label
-BEGIN
-    SA_COMPONENTS.CREATE_GROUP (
-        policy_name => 'proj_policy',
-        group_num   => 1000,
-        short_name  => 'DIR',
-        long_name   => 'DIRECTOR'
-    );
-    SA_COMPONENTS.CREATE_GROUP (
-        policy_name => 'proj_policy',
-        group_num   => 1100,
-        short_name  => 'MGR',
-        long_name   => 'MANAGER',
-        parent_name => 'DIR'
-    );
-    SA_COMPONENTS.CREATE_GROUP (
-        policy_name => 'proj_policy',
-        group_num   => 1110,
-        short_name  => 'EMP',
-        long_name   => 'EMPLOYEE',
-        parent_name => 'MGR'
-    );
-END;
-/
-
 -- GROUP (REGION)
 
--- region groups for proj r/w label
 BEGIN
     SA_COMPONENTS.CREATE_GROUP (
         policy_name => 'proj_policy',

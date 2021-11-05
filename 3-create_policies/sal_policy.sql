@@ -17,9 +17,8 @@ BEGIN
 END;
 /
 
--- LEVEL
+-- LEVEL (POSITION)
 
--- levels for emp r/w label
 BEGIN
     SA_COMPONENTS.CREATE_LEVEL (
         policy_name => 'sal_policy',

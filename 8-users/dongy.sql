@@ -17,13 +17,13 @@ BEGIN
     SA_USER_ADMIN.SET_USER_LABELS (
         policy_name       => 'sal_policy',
         user_name         => 'dongy',
-        max_read_label    => 'MGR:ENG,HR,FIN:APAC',
-        max_write_label   => 'MGR:ENG,HR,FIN:APAC',
+        max_read_label    => 'DIR:ENG,HR,FIN:APAC',
+        max_write_label   => 'DIR:ENG,FIN:APAC',
         min_write_label   => 'EMP',
-        def_label         => 'MGR:ENG,HR,FIN:APAC'
+        def_label         => 'DIR:ENG,HR,FIN:APAC'
     );
 END;
 /
 
-GRANT SELECT, UPDATE, INSERT, DELETE ON company.employees TO dongy;
-GRANT SELECT, UPDATE, INSERT, DELETE ON company.dongy TO dongy;
+GRANT SELECT, UPDATE ON company.employees TO dongy;
+GRANT SELECT, UPDATE ON company.salary TO dongy;

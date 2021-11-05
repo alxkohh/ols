@@ -13,15 +13,6 @@ BEGIN
         min_write_label   => 'EMP',
         def_label         => 'MGR:ENG,HR,FIN:SG'
     );
-    
-    SA_USER_ADMIN.SET_USER_LABELS (
-        policy_name       => 'sal_policy',
-        user_name         => 'alexk',
-        max_read_label    => 'EMP::',
-        max_write_label   => 'EMP::',
-        min_write_label   => 'EMP',
-        def_label         => 'EMP::'
-    );
 END;
 /
 

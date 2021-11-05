@@ -26,10 +26,9 @@ def get_insert_statement(table, cols):
 def insert_vals(stmt, values):
     return stmt.format(values=values)
 
-# random generators
+commit = "COMMIT; \n"
 
-def gen_random_alpha_str(length):
-    return ''.join((random.choice(string.ascii_lowercase) for x in range(length)))
+# random generators
 
 def gen_random_numeric_str(length):
     return ''.join((random.choice(string.digits) for x in range(length)))

@@ -17,9 +17,11 @@ budget_stmt = helper.get_insert_statement(budget_table_name,
 
 def gen_statements():
     results = []
+    ctr = 0
     for elem in product(*labels.get('projects')):
-        proj_name = helper.gen_random_alpha_str(10)
-        description = helper.gen_random_alpha_str(30)
+        ctr += 1
+        proj_name = 'p' + str(ctr)
+        description = 'desc' + str(ctr)
         classification = elem[0]
         eng_type = elem[1]
         region = elem[2]
@@ -31,5 +33,10 @@ def gen_statements():
         results.append(helper.insert_vals(proj_stmt, proj_table_vals_f))
         results.append(helper.insert_vals(budget_stmt, budget_table_vals_f))
 
+        if ctr % 80 == 0:
+            results.append(helper.commit)
+
+    results.append('UPDATE project_budgets SET budget_label = gen_budget_label(proj_name); \n')
+    results.append(helper.commit)
     return results
 
