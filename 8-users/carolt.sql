@@ -13,6 +13,15 @@ BEGIN
         min_write_label   => 'C',
         def_label         => 'C:SEC,DEV:EMEA'
     );
+
+    SA_USER_ADMIN.SET_USER_LABELS (
+        policy_name       => 'budget_policy',
+        user_name         => 'carolt',
+        max_read_label    => 'C:SEC,DEV:EMEA',
+        max_write_label   => 'C:SEC,DEV:EMEA',
+        min_write_label   => 'U',
+        def_label         => 'C:SEC,DEV:EMEA'
+    );
 END;
 /
 

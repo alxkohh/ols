@@ -12,7 +12,7 @@ BEGIN
     SA_SYSDBA.CREATE_POLICY(
         policy_name     => 'budget_policy',
         column_name     => 'budget_label',
-        default_options => 'READ_CONTROL, WRITE_CONTROL'
+        default_options => 'ALL_CONTROL'
     );
 END;
 /
@@ -71,60 +71,8 @@ BEGIN
 END;
 /
 
--- COMPARTMENT (DEPT)
-
-BEGIN
-    SA_COMPONENTS.CREATE_COMPARTMENT (
-        policy_name => 'budget_policy',
-        comp_num    => 30,
-        short_name  => 'HR',
-        long_name   => 'HUMAN_RESOURCE'
-    );
-    SA_COMPONENTS.CREATE_COMPARTMENT (
-        policy_name => 'budget_policy',
-        comp_num    => 20,
-        short_name  => 'FIN',
-        long_name   => 'FINANCE'
-    );
-    SA_COMPONENTS.CREATE_COMPARTMENT (
-        policy_name => 'budget_policy',
-        comp_num    => 10,
-        short_name  => 'ENG',
-        long_name   => 'ENGINEERING'
-    );
-END;
-/
-
--- GROUP (POSITION)
-
--- position groups for budget r/w label
-BEGIN
-    SA_COMPONENTS.CREATE_GROUP (
-        policy_name => 'budget_policy',
-        group_num   => 1000,
-        short_name  => 'DIR',
-        long_name   => 'DIRECTOR'
-    );
-    SA_COMPONENTS.CREATE_GROUP (
-        policy_name => 'budget_policy',
-        group_num   => 1100,
-        short_name  => 'MGR',
-        long_name   => 'MANAGER',
-        parent_name => 'DIR'
-    );
-    SA_COMPONENTS.CREATE_GROUP (
-        policy_name => 'budget_policy',
-        group_num   => 1110,
-        short_name  => 'EMP',
-        long_name   => 'EMPLOYEE',
-        parent_name => 'MGR'
-    );
-END;
-/
-
 -- GROUP (REGION)
 
--- region groups for budget r/w label
 BEGIN
     SA_COMPONENTS.CREATE_GROUP (
         policy_name => 'budget_policy',
