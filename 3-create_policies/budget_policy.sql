@@ -12,7 +12,7 @@ BEGIN
     SA_SYSDBA.CREATE_POLICY(
         policy_name     => 'budget_policy',
         column_name     => 'budget_label',
-        default_options => 'READ_CONTROL, WRITE_CONTROL, CHECK_CONTROL'
+        default_options => 'ALL_CONTROL'
     );
 END;
 /
