@@ -13,7 +13,7 @@ def add_quotes(s):
 
 def sql_values_format(values):
     for i in range(len(values)):
-        if type(values[i]) == str:
+        if type(values[i]) == str and values[i][-1] != ')':
             values[i] = add_quotes(values[i])
         elif type(values[i]) == int:
             values[i] = str(values[i])

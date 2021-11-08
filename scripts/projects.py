@@ -8,7 +8,7 @@ proj_table_name = 'projects'
 budget_table_name = 'project_budgets'
 
 proj_table_cols = ['proj_name', 'description', 'classification', 'eng_type', 'region']
-budget_table_cols = ['proj_name', 'budget']
+budget_table_cols = ['proj_name', 'budget', 'budget_label']
 
 proj_stmt = helper.get_insert_statement(proj_table_name,
                                         helper.sql_columns_format(proj_table_cols))
@@ -26,17 +26,17 @@ def gen_statements():
         eng_type = elem[1]
         region = elem[2]
         budget = helper.gen_random_numeric(30, 100) * 1000
+        budget_label = 'gen_budget_label(\'{proj_name}\')'
 
         proj_table_vals_f = helper.sql_values_format([proj_name, description, classification,
                                                       eng_type, region])
-        budget_table_vals_f = helper.sql_values_format([proj_name, budget])
+        budget_table_vals_f = helper.sql_values_format([proj_name, budget, budget_label])
         results.append(helper.insert_vals(proj_stmt, proj_table_vals_f))
         results.append(helper.insert_vals(budget_stmt, budget_table_vals_f))
 
         if ctr % 80 == 0:
             results.append(helper.commit)
 
-    results.append('UPDATE project_budgets SET budget_label = gen_budget_label(proj_name); \n')
     results.append(helper.commit)
     return results
 

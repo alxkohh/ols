@@ -18,7 +18,7 @@ BEGIN
         policy_name    => 'sal_policy',
         schema_name    => 'company',
         table_name     => 'salary',
-        table_options  => 'READ_CONTROL, WRITE_CONTROL, CHECK_CONTROL'
+        table_options  => 'READ_CONTROL, WRITE_CONTROL, CHECK_CONTROL, LABEL_DEFAULT'
     );
 END;
 /
@@ -41,7 +41,7 @@ BEGIN
         policy_name    => 'budget_policy',
         schema_name    => 'company',
         table_name     => 'project_budgets',
-        table_options  => 'READ_CONTROL, WRITE_CONTROL, CHECK_CONTROL'
+        table_options  => 'READ_CONTROL, WRITE_CONTROL, CHECK_CONTROL, LABEL_DEFAULT'
     );
 END;
 /
