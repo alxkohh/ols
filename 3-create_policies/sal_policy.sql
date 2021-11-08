@@ -12,7 +12,7 @@ BEGIN
     SA_SYSDBA.CREATE_POLICY(
         policy_name     => 'sal_policy',
         column_name     => 'sal_label',
-        default_options => 'ALL_CONTROL'
+        default_options => 'READ_CONTROL, WRITE_CONTROL, CHECK_CONTROL'
     );
 END;
 /
